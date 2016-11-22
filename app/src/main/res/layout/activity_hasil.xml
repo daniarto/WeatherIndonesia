@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="alterationstudio.weatherindonesia.hasilActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/back"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Nusa Tenggara Barat"
+        android:textSize="27dp"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="1dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/cerah"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="32"
+        android:textSize="45dp"
+        android:id="@+id/derajad"
+        android:textColor="#FFFFFF"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="o"
+        android:textSize="24dp"
+        android:textColor="#FFFFFF"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/derajad"
+        android:layout_toRightOf="@+id/derajad"
+        android:layout_toEndOf="@+id/derajad" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cerah"
+        android:textSize="20dp"
+        android:id="@+id/cuaca"
+        android:textColor="#FFFFFF"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selasa"
+        android:layout_marginLeft="15dp"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/tvHello"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22 November 2016"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <View android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bbb"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listCuaca"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/view" />
+
+</RelativeLayout>
