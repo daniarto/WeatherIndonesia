@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="15dp"
-        android:text="Silahkan masukkan Kota dan Tanggal"
+        android:text="Silahkan masukkan Kota"
         android:layout_marginTop="200dp"
         android:id="@+id/textView4" />
 
@@ -45,24 +45,19 @@
     </AutoCompleteTextView>
 
 
-        <EditText
-        android:id="@+id/idTanggal"
-        android:inputType="date"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="23 November 2016" />
+
 
         <Button
             android:id="@+id/buttonCari"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cari"
+            android:text="Lihat Cuaca"
+            style="@style/Base.TextAppearance.AppCompat.Button"
             android:textColor="#FAFAFA"
             android:layout_marginTop="70dp"
-            android:background="#E65100"
+            android:backgroundTint="#E65100"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.50" />
+             />
 
     </LinearLayout>
 
