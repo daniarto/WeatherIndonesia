@@ -117,8 +117,8 @@ public class hasilActivity extends AppCompatActivity {
                     Log.e("icon_url:",icon_url);
                 }
 
-                String ImgUrl="http://openweathermap.org/img/w/"+icon_url+".png";
-                new DownloadImageTask().execute(ImgUrl);
+//                String ImgUrl="http://openweathermap.org/img/w/"+icon_url+".png";
+//                new DownloadImageTask().execute(ImgUrl);
 
                 String temp=jobj.getJSONObject("main").getString("temp");
 
@@ -144,20 +144,33 @@ public class hasilActivity extends AppCompatActivity {
 //                    s1= new String(chars);
 
                     TextView textView2=(TextView)findViewById(R.id.textView2);
+                    ImageView imageView=(ImageView)findViewById(R.id.imageView);
                     if (s1.equals("Rain")){
                         textView2.setText("Hujan");
+                        imageView.setImageResource(R.drawable.hujan);
                     }else if (s1.equals("Clear")){
                         textView2.setText("Cerah");
+                        imageView.setImageResource(R.drawable.cerah);
+
                     }else if (s1.equals("Clouds")){
                         textView2.setText("Berawan");
+                        imageView.setImageResource(R.drawable.berawan);
+
                     }else if (s1.equals("Thunderstorm")){
-                        textView2.setText("Badai Petir");
+                        textView2.setText("Petir");
+                        imageView.setImageResource(R.drawable.petir);
+
                     }else if (s1.equals("Haze")){
                         textView2.setText("Berkabut");
+                        imageView.setImageResource(R.drawable.kabut);
+
                     }else if (s1.equals("Mist")){
                         textView2.setText("Berembun");
+                        imageView.setImageResource(R.drawable.embun);
+
                     }else{
                         textView2.setText(s1);
+                        imageView.setImageResource(R.drawable.other);
                     }
                 }
 
@@ -177,34 +190,34 @@ public class hasilActivity extends AppCompatActivity {
         }
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-
-        protected Bitmap doInBackground(String... urls) {
-            try {
-                return loadImageFromNetwork(urls[0]);
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-
-            ImageView mImageView = (ImageView) findViewById(R.id.imageView);
-            mImageView.setImageBitmap(result);
-
-        }
-
-        private Bitmap loadImageFromNetwork(String url)
-                throws MalformedURLException, IOException {
-            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-                    url).getContent());
-            return bitmap;
-        }
-
-    }
+//    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+//
+//        protected Bitmap doInBackground(String... urls) {
+//            try {
+//                return loadImageFromNetwork(urls[0]);
+//            } catch (MalformedURLException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//
+//        protected void onPostExecute(Bitmap result) {
+//
+//            ImageView mImageView = (ImageView) findViewById(R.id.imageView);
+//            mImageView.setImageBitmap(result);
+//
+//        }
+//
+//        private Bitmap loadImageFromNetwork(String url)
+//                throws MalformedURLException, IOException {
+//            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+//                    url).getContent());
+//            return bitmap;
+//        }
+//
+//    }
 }
