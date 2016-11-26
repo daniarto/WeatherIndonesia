@@ -1,5 +1,6 @@
 package alterationstudio.weatherindonesia;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,16 +31,28 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class hasilActivity extends AppCompatActivity {
 
-    private ListView daftar;
-    private String[] jadwalCuaca = new String[]{
-            "Rabu, 23 Nov 2016 - Cerah","Kamis, 24 Nov 2016 - Hujan","Jumat, 25 Nov 2016 - Berawan",
-            "Sabtu, 26 Nov 2016 - Cerah","Minggu, 27 Nov 2016 - Berawan","Senin, 28 Nov 2016 - Hujan",
-            "Selasa, 29 Nov 2016 - Cerah","Rabu, 30 Nov 2016 - Hujan"
-    };
+    private String TAG = hasilActivity.class.getSimpleName();
+    private ProgressDialog pDialog;
+    private ListView lv;
+    private List<String> tanggal;
+    private List<String> kota1;
+    private List<String> negara1;
+    private List<String> sMain;
+    private List<String> sTemp;
+    private List<String> sPagi;
+    private List<String> sSiang;
+    private List<String> sMalam;
+    private List<String> sSore;
+
+    String url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
 
     public String readJSONFeed(String URL1){
         StringBuilder stringbuilder = new StringBuilder();
@@ -74,25 +88,25 @@ public class hasilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil);
 
-        daftar = (ListView) findViewById(R.id.listCuaca);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (hasilActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, jadwalCuaca);
-        daftar.setAdapter(adapter);
-        daftar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int arrayke, long id) {
-                //Toast.makeText(MainActivity.this, "Kamu memilih :"+bahasa[arrayke], Toast.LENGTH_LONG).show();
+        lv = (ListView)findViewById(R.id.listCuaca) ;
 
-            }
-        });
+        tanggal = new ArrayList<>();
+        kota1 = new ArrayList<>();
+        negara1 = new ArrayList<>();
+        sMain = new ArrayList<>();
+        sTemp = new ArrayList<>();
+        sPagi = new ArrayList<>();
+        sSiang = new ArrayList<>();
+        sSore = new ArrayList<>();
+        sMalam = new ArrayList<>();
+        new getForecast().execute();
 
         Intent intent = getIntent();
         String city = intent.getStringExtra("Kota");
-
         String URL1 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=389a47df45fd35c8a0c42eadb59f01f0";
         new hasilActivity.ReadPlacesFeedTask().execute(URL1);
 
-        DateFormat df = new SimpleDateFormat("MMM d, yyyy");
+        DateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
         String date = df.format(new Date());
         TextView tanggal = (TextView)findViewById(R.id.textView3);
         tanggal.setText(date);
@@ -107,25 +121,14 @@ public class hasilActivity extends AppCompatActivity {
         protected void onPostExecute(String result)
         {
             try {
-                Log.e("Data: ",result);
                 JSONObject jobj =new JSONObject(result);
                 JSONArray arr2 = jobj.getJSONArray("weather");
-                String icon_url="";
-                for (int i = 0; i < arr2.length(); i++)
-                {
-                    icon_url = arr2.getJSONObject(i).getString("icon");
-                    Log.e("icon_url:",icon_url);
-                }
-
-//                String ImgUrl="http://openweathermap.org/img/w/"+icon_url+".png";
-//                new DownloadImageTask().execute(ImgUrl);
 
                 String temp=jobj.getJSONObject("main").getString("temp");
 
                 float temp1=Float.valueOf(temp);
                 float temp11= (float) (temp1-272.15);
 
-                Log.e("Temp:", String.valueOf(temp11));
                 TextView derajad = (TextView)findViewById(R.id.derajad);
                 String temperatur = String.valueOf(temp11);
                 String DEGREE  = "\u00b0";
@@ -137,7 +140,6 @@ public class hasilActivity extends AppCompatActivity {
                 for (int i = 0; i < arr.length(); i++)
                 {
                     String main = arr.getJSONObject(i).getString("main");
-                    Log.e("descROCK",main);
                     String s1=main;
 //                    char[] chars = s1.toCharArray();
 //                    chars[0] = Character.toUpperCase(chars[0]);
@@ -151,23 +153,18 @@ public class hasilActivity extends AppCompatActivity {
                     }else if (s1.equals("Clear")){
                         textView2.setText("Cerah");
                         imageView.setImageResource(R.drawable.cerah);
-
                     }else if (s1.equals("Clouds")){
                         textView2.setText("Berawan");
                         imageView.setImageResource(R.drawable.berawan);
-
                     }else if (s1.equals("Thunderstorm")){
-                        textView2.setText("Petir");
+                        textView2.setText("Badai Petir");
                         imageView.setImageResource(R.drawable.petir);
-
                     }else if (s1.equals("Haze")){
                         textView2.setText("Berkabut");
                         imageView.setImageResource(R.drawable.kabut);
-
                     }else if (s1.equals("Mist")){
                         textView2.setText("Berembun");
                         imageView.setImageResource(R.drawable.embun);
-
                     }else{
                         textView2.setText(s1);
                         imageView.setImageResource(R.drawable.other);
@@ -176,9 +173,6 @@ public class hasilActivity extends AppCompatActivity {
 
                 String country = jobj.getJSONObject("sys").getString("country");
                 String city = jobj.getString("name");
-
-                Log.e("Negara:", country);
-                Log.e("Kota: ", city);
 
                 TextView location = (TextView)findViewById(R.id.tvHello);
                 location.setText(city + ", " + country);
@@ -190,34 +184,117 @@ public class hasilActivity extends AppCompatActivity {
         }
     }
 
-//    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-//
-//        protected Bitmap doInBackground(String... urls) {
-//            try {
-//                return loadImageFromNetwork(urls[0]);
-//            } catch (MalformedURLException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//        protected void onPostExecute(Bitmap result) {
-//
-//            ImageView mImageView = (ImageView) findViewById(R.id.imageView);
-//            mImageView.setImageBitmap(result);
-//
-//        }
-//
-//        private Bitmap loadImageFromNetwork(String url)
-//                throws MalformedURLException, IOException {
-//            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-//                    url).getContent());
-//            return bitmap;
-//        }
-//
-//    }
+private class getForecast extends AsyncTask<Void, Void, Void> {
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        // Showing progress dialog
+        pDialog = new ProgressDialog(hasilActivity.this);
+        pDialog.setMessage("Please wait...");
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+    }
+
+    @Override
+    protected Void doInBackground(Void... arg0) {
+        HttpHandler sh = new HttpHandler();
+        Intent intent = getIntent();
+        String citys = intent.getStringExtra("Kota");
+        String jsonStr = sh.makeServiceCall(url + citys + "&mode=json&units=metric&APPID=389a47df45fd35c8a0c42eadb59f01f0");
+
+        if (jsonStr != null) {
+            try {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+
+                JSONObject city = jsonObject.getJSONObject("city");
+                String kota = city.getString("name");
+                String country = city.getString("country");
+                kota1.add(kota);
+                negara1.add(country);
+
+                JSONArray arraylist = jsonObject.getJSONArray("list");
+
+                for (int i = 0; i < arraylist.length(); i++) {
+
+                    JSONObject c = arraylist.getJSONObject(i);
+
+                    JSONObject temp = c.getJSONObject("temp");
+                    String min_temp = temp.getString("min");
+                    String max_temp = temp.getString("max");
+                    Double temp1 = Double.parseDouble(min_temp);
+                    Double temp2 = Double.parseDouble(max_temp);
+                    Double temppagi = Double.parseDouble(temp.getString("morn"));
+                    Double tempsiang = Double.parseDouble(temp.getString("day"));
+                    Double tempsore = Double.parseDouble(temp.getString("eve"));
+                    Double tempmalam = Double.parseDouble(temp.getString("night"));
+                    String pagi = "Pagi: " + String.format("%.1f", temppagi);
+                    String siang = "Siang: " + String.format("%.1f", tempsiang);
+                    String sore = "Sore: " + String.format("%.1f", tempsore);
+                    String malam = "Malam: " + String.format("%.1f", tempmalam);
+                    String temps = String.format("%.1f", temp1) + "/" + String.format("%.1f", temp2);
+
+                    JSONArray weather = c.getJSONArray("weather");
+                    String main = weather.getJSONObject(0).getString("main");
+
+                    sTemp.add(temps);
+                    sPagi.add(pagi);
+                    sSiang.add(siang);
+                    sSore.add(sore);
+                    sMalam.add(malam);
+                    sMain.add(main);
+
+                }
+
+
+            } catch (final JSONException e) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Json parsing error: " + e.getMessage(),
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+            }
+        } else {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(),
+                            "Couldn't get json from server!",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
+            });
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void result) {
+        super.onPostExecute(result);
+        SimpleDateFormat curFormater = new SimpleDateFormat("EEE, MMM dd, yyyy");
+        GregorianCalendar date = new GregorianCalendar();
+        String[] dateStringArray = new String[7];
+
+        for (int day = 0; day < 7; day++) {
+            String tanggal1 = curFormater.format(date.getTime());
+            date.roll(Calendar.DAY_OF_YEAR, true);
+            tanggal.add(tanggal1);
+        }
+        // Dismiss the progress dialog
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+
+        /**
+         * Updating parsed JSON data into ListView
+         * */
+        CustomListAdapter adapter = new CustomListAdapter(hasilActivity.this, tanggal, sMain, sTemp, sPagi, sSiang, sSore, sMalam);
+        lv.setAdapter(adapter);
+
+    }
+}
 }

@@ -1,3 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_3e5c0ff0b857082c6aef0e7cbd076b45a537da3f.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_475335259f73e6dd1236e7c1e10763d4cb601179.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_0cc4b245e038ea357b50cb7427ffdfb165d83c27.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_854d7df5c7ee32d57ca1abe9a2214b874c089b53.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_595199b17983b738184ea59dd2c496a2db48a20f.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_8678cf381827aaefe93bdafa3de97aba3fb9a5c0.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_740bdf116e1432f8907d1ff3e47aafdd03ff9ee2.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_561434a605fa611a68222de31a3843b3472ab2b4.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_bfef6fca9b2a51aacaec1f1e5922f2bc853be9ad.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_df7049710262c2e49421e6ce67a6e74249462326.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_cdafe758d732a14021dbe70fdd9e0a436567cf5f.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_5238579494918095f6fc6011657cd4d401286e17.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d4787779da296e40a99c8ed8bb7c2cc9b989cde4.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_1c84e86c56d9808bcadecd2ab31c06e5a7dcc302.jar" />
+    </item>
+    <item
+        jar="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="E:\Document\Workspace\WeatherIndonesia\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_600358c5f72706267d8e8f83d1e4f0f7f665c285.jar" />
+    </item>
+
+</items>
